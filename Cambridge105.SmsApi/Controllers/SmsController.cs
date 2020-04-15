@@ -30,7 +30,7 @@ namespace Cambridge105.SmsApi.Controllers
             mm.Subject = "SMS from " + sender;
             mm.Body = content ?? "Empty message";
             SmtpClient client = new SmtpClient(Settings.SmtpHost, 587);
-            client.Credentials = new NetworkCredential("smtprelay", "sendnow");
+            client.Credentials = new NetworkCredential(Settings.SmtpUser, Settings.SmtpPassword);
             client.EnableSsl = true;
             client.DeliveryFormat = SmtpDeliveryFormat.International;
             client.Send(mm);
